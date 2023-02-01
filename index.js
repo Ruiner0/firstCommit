@@ -1,13 +1,46 @@
-// let secondEl = document.querySelector('.list-group-item:nth-child(2)');
-// let thirdEl = document.querySelector('.list-group-item:nth-child(3)');
+let itemslist=document.querySelector('#items')
 
-// secondEl.style.backgroundColor='green';
-// thirdEl.style.display='none';
+//parentElement
+itemslist.parentElement.style.backgroundColor='#f4f4f4';
 
-// let items = document.querySelectorAll('.list-group-item');
-// items[1].style.backgroundColor='green';
+//lastElementChild
+itemslist.lastElementChild.textContent='Hello';
 
-let odd=document.querySelectorAll('.list-group-item:nth-child(odd)');
-for (let i=0; i<odd.length; i++){
-    odd[i].style.backgroundColor='MediumSeaGreen';
-}
+// lastchild
+console.log(itemslist.lastChild);
+
+// firstelementchild
+itemslist.firstElementChild.style.color="green";
+
+// firstchild
+console.log(itemslist.firstChild);
+
+// nextsibling
+console.log(itemslist.nextSibling);
+
+// nextelementsibling
+console.log(itemslist.nextSibling);
+
+// previoussibling
+console.log(itemslist.previousSibling);
+
+// previouselementsibling
+console.log(itemslist.previousElementSibling);
+
+// createelement
+let newDiv=document.createElement('div')
+newDiv.id='newdiv'
+
+// setAttribute
+newDiv.setAttribute('title', 'hello')
+
+// createtesxtnode
+let newDivText=document.createTextNode("Hello..")
+
+// appendchild
+newDiv.appendChild(newDivText)
+
+let container=document.querySelector('header .container')
+let h1=document.querySelector('header h1')
+
+container.insertBefore(newDiv, h1)
