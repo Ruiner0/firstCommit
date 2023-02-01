@@ -1,5 +1,5 @@
 let header = document.getElementById("main-header");
-let items = document.getElementsByClassName("list-group-item");
+let items = document.getElementsByTagName("li");
 
 header.style.borderBottom = "solid 3px #000";
 
