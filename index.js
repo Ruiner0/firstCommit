@@ -1,10 +1,13 @@
-let header = document.getElementById("main-header");
-let items = document.getElementsByTagName("li");
+// let secondEl = document.querySelector('.list-group-item:nth-child(2)');
+// let thirdEl = document.querySelector('.list-group-item:nth-child(3)');
 
-header.style.borderBottom = "solid 3px #000";
+// secondEl.style.backgroundColor='green';
+// thirdEl.style.display='none';
 
-items[2].style.backgroundColor='green';
+// let items = document.querySelectorAll('.list-group-item');
+// items[1].style.backgroundColor='green';
 
-for(let i=0; i<items.length; i++){
-    items[i].style.fontWeight='bold';
+let odd=document.querySelectorAll('.list-group-item:nth-child(odd)');
+for (let i=0; i<odd.length; i++){
+    odd[i].style.backgroundColor='MediumSeaGreen';
 }
