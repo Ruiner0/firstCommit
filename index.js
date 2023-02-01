@@ -1,46 +1,31 @@
-let itemslist=document.querySelector('#items')
+let form=document.getElementById('addForm');
+let itemList=document.getElementById('items');
 
-//parentElement
-itemslist.parentElement.style.backgroundColor='#f4f4f4';
+form.addEventListener('submit',addItems);
+itemList.addEventListener('click',removeItem);
 
-//lastElementChild
-itemslist.lastElementChild.textContent='Hello';
+function addItems(e){
+    e.preventDefault();
 
-// lastchild
-console.log(itemslist.lastChild);
+    let newItem=document.getElementById('item').value;
+    let li=document.createElement('li');
+    li.className='list-group-item';
+    li.appendChild(document.createTextNode(newItem))
 
-// firstelementchild
-itemslist.firstElementChild.style.color="green";
+    let delBtn=document.createElement('button');
+    delBtn.className='btn btn-danger btn-sm float-right delete';
+    delBtn.appendChild(document.createTextNode('X'))
 
-// firstchild
-console.log(itemslist.firstChild);
+    li.appendChild(delBtn)
 
-// nextsibling
-console.log(itemslist.nextSibling);
+    itemList.appendChild(li)
+}
 
-// nextelementsibling
-console.log(itemslist.nextSibling);
-
-// previoussibling
-console.log(itemslist.previousSibling);
-
-// previouselementsibling
-console.log(itemslist.previousElementSibling);
-
-// createelement
-let newDiv=document.createElement('div')
-newDiv.id='newdiv'
-
-// setAttribute
-newDiv.setAttribute('title', 'hello')
-
-// createtesxtnode
-let newDivText=document.createTextNode("Hello..")
-
-// appendchild
-newDiv.appendChild(newDivText)
-
-let container=document.querySelector('header .container')
-let h1=document.querySelector('header h1')
-
-container.insertBefore(newDiv, h1)
+function removeItem(e){
+    if(e.target.classList.contains('delete')){
+        if(confirm('Are you sure?')){
+            let li=e.target.parentElement;
+            itemList.removeChild(li)
+        }
+    }
+}
