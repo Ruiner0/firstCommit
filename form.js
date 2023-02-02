@@ -7,13 +7,34 @@ document.getElementById('my_form').addEventListener('submit', disp);
 function disp(e){
     e.preventDefault();
 
-    let n=e.target.name;
-    let email=e.target.email;
-    
-    localStorage.setItem('username',n.value)
-    localStorage.setItem('email',email.value)
+    let n=e.target.name.value;
+    let email=e.target.email.value;
 
-    li.appendChild(document.createTextNode("Username : "+n.value+", Email : "+email.value))
-    ulist.appendChild(li)
+    const obj={
+        n, email
+    }
+    
+    localStorage.setItem(obj.email,JSON.stringify(obj))
+    showUserOnScreen(obj)
+
 }
 
+function showUserOnScreen(obj){
+    let parentEl=document.getElementById('ul')
+    let childEl=document.createElement('li')
+    let btn=document.createElement('input')
+    btn.type='button'
+    btn.value='Delete'
+    btn.onclick=()=>{
+        localStorage.removeItem(obj.email)
+        parentEl.removeChild(childEl)
+    }
+    
+    
+    
+    childEl.textContent=obj.n+' | '+obj.email
+    parentEl.appendChild(parentEl.appendChild(childEl))
+
+    childEl.appendChild(btn)
+    
+}
