@@ -22,12 +22,28 @@ function disp(e){
 function showUserOnScreen(obj){
     let parentEl=document.getElementById('ul')
     let childEl=document.createElement('li')
-    let btn=document.createElement('input')
-    btn.type='button'
-    btn.value='Delete'
-    btn.onclick=()=>{
+    let del=document.createElement('input')
+    let edit=document.createElement('input')
+    edit.type='button'
+    edit.value='Edit'
+    del.type='button'
+    del.value='Delete'
+    
+    del.onclick=()=>{
         localStorage.removeItem(obj.email)
         parentEl.removeChild(childEl)
+    }
+
+    edit.onclick=()=>{
+        let name=document.getElementById('name')
+        let em=document.getElementById('email')
+
+        name.value=obj.n
+        em.value=obj.email
+
+        localStorage.removeItem(obj.email)
+        parentEl.removeChild(childEl)
+
     }
     
     
@@ -35,6 +51,7 @@ function showUserOnScreen(obj){
     childEl.textContent=obj.n+' | '+obj.email
     parentEl.appendChild(parentEl.appendChild(childEl))
 
-    childEl.appendChild(btn)
+    childEl.appendChild(del)
+    childEl.appendChild(edit)
     
 }
